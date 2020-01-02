@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTetrisLib", "WpfTetrisLib\WpfTetrisLib.csproj", "{1AAC1ECA-4E45-4B91-9F5B-783A89040B6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTetrisApp", "WpfTetrisApp\WpfTetrisApp.csproj", "{9480E983-B3F2-4C59-AA67-D3A16D189623}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AAC1ECA-4E45-4B91-9F5B-783A89040B6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AAC1ECA-4E45-4B91-9F5B-783A89040B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AAC1ECA-4E45-4B91-9F5B-783A89040B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AAC1ECA-4E45-4B91-9F5B-783A89040B6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9480E983-B3F2-4C59-AA67-D3A16D189623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9480E983-B3F2-4C59-AA67-D3A16D189623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9480E983-B3F2-4C59-AA67-D3A16D189623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9480E983-B3F2-4C59-AA67-D3A16D189623}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C270593-091B-42C2-A730-F46C8B9AF989}
+	EndGlobalSection
+EndGlobal
