@@ -45,6 +45,7 @@ namespace WpfTetrisApp
 
         private void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
         }
     }
 }
