@@ -1,10 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WpfTetrisLib.Models
+﻿namespace WpfTetrisLib.Models
 {
-    public class Direction
+    public enum Direction
     {
+        Up,
+        Right,
+        Down,
+        Left
+    }
+
+    public enum RotationDirection
+    {
+        Right,
+        Left
+    }
+
+    public enum MoveDirection
+    {
+        Right,
+        Down,
+        Left
     }
 }
