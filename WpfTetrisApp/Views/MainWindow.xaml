@@ -2,9 +2,54 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:views="clr-namespace:WpfTetrisApp.Views"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="Tetris" Height="600" Width="550" >
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <views:FieldView Grid.Column="0" />
+
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <views:NextFieldView Grid.Row="0"
+                                 HorizontalAlignment="Center" />
+
+            <views:GameResultView Grid.Row="2" 
+                                  HorizontalAlignment="Center" />
+        </Grid>
+
+        <Grid Grid.Column="0"
+              Grid.ColumnSpan="2"
+              Background="#99000000"
+              Visibility="{Binding IsGameOver.Value, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="1"
+                       Text="Game over!"
+                       FontSize="48"
+                       TextAlignment="Center"
+                       Foreground="#FFFFA0C0" />
+            <TextBlock Grid.Row="2"
+                       Text="Press the Esc key to continue"
+                       FontSize="24"
+                       TextAlignment="Center" />
+        </Grid>
     </Grid>
 </Window>

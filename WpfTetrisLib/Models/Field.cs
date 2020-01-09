@@ -132,5 +132,32 @@ namespace WpfTetrisLib.Models
 
             if(Tetrimino.Value.Move(moveDirection, CheckCollision)) Tetrimino.ForceNotify();
         }
+
+        public void RotateTetrimino(RotationDirection rotationDirection)
+        {
+            if (!_isActivated.Value) return;
+
+            if(Tetrimino.Value.Rotation(rotationDirection, CheckCollision))
+                Tetrimino.ForceNotify();
+        }
+
+        public void ForceFixTetrimino()
+        {
+            if(!_isActivated.Value) return;
+
+            Timer.Stop();
+            while (Tetrimino.Value.Move(MoveDirection.Down, CheckCollision))
+            {
+            }
+            FixTetrimino();
+            Timer.Start();
+        }
+
+        public void SpeedUp()
+        {
+            const int min = 15;
+            var interval = Timer.Interval / 2;
+            Timer.Interval = Math.Max(interval, min);
+        }
     }
 }
