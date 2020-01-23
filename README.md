@@ -1,6 +1,6 @@
-# Windows Presentation Foundation .NET Core 3.1 Tetris
+# Windows Presentation Foundation .NET Core 3.0 Tetris
 
-Tetris&trade; clone based around .NET Core 3.1 C# and WPF utilising MVVM architecture, ReactiveProperties and Prism.MVVM.
+Tetris&trade; clone based around .NET Core 3.0 C# and WPF utilising MVVM architecture, ReactiveProperties and Prism.MVVM.
 Application was built as a semester project.
 
 ## Core features of the game
