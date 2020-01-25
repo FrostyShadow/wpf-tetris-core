@@ -18,6 +18,9 @@ namespace WpfTetrisLib.Providers
             return new Random(seed);
         });
 
-        public static Random ThreadRandom => RandomProvider.RandomWrapper.Value;
+        /// <summary>
+        /// Gets a random number that is thread independent
+        /// </summary>
+        public static Random ThreadRandom => RandomWrapper.Value;
     }
 }

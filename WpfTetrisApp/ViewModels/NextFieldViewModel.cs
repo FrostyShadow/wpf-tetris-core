@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Text;
+using System.Windows.Controls;
 using System.Windows.Media;
 using Prism.Mvvm;
 using Reactive.Bindings;
@@ -23,10 +24,19 @@ namespace WpfTetrisApp.ViewModels
             set => SetProperty(ref _cells, value);
         }
 
+        private Grid _fieldGrid;
+
+        public Grid FieldGrid
+        {
+            get => _fieldGrid;
+            set => SetProperty(ref _fieldGrid, value);
+        }
+
         private static Color BackgroundColor => Colors.WhiteSmoke;
 
         public NextFieldViewModel(IReadOnlyReactiveProperty<TetriminoKind> nextTetriminoKind)
         {
+            FieldGrid = new Grid();
             _cells = new CellViewModel[RowCount, ColumnCount];
             foreach (var cell in Cells.WithIndex())
             {

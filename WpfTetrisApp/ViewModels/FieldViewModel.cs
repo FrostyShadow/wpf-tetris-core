@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
+using System.Windows.Controls;
 using System.Windows.Media;
 using Prism.Mvvm;
 using Reactive.Bindings;
@@ -31,10 +32,19 @@ namespace WpfTetrisApp.ViewModels
             set => SetProperty(ref _isActivated, value);
         }
 
+        private Grid _fieldGrid;
+
+        public Grid FieldGrid
+        {
+            get => _fieldGrid;
+            set => SetProperty(ref _fieldGrid, value);
+        }
+
         private static Color BackgroundColor => Colors.WhiteSmoke;
 
         public FieldViewModel(Field field)
         {
+            FieldGrid = new Grid();
             Field = field;
             _isActivated = Field.IsActivated;
 
@@ -60,5 +70,10 @@ namespace WpfTetrisApp.ViewModels
         public void MoveTetrimino(MoveDirection moveDirection) => Field.MoveTetrimino(moveDirection);
         public void RotateTetrimino(RotationDirection rotationDirection) => Field.RotateTetrimino(rotationDirection);
         public void ForceFixTetrimino() => Field.ForceFixTetrimino();
+
+        private void FieldGridUpdate(FieldSetMessage fieldSetMessage)
+        {
+            if (fieldSetMessage.Grid != null) FieldGrid = fieldSetMessage.Grid;
+        }
     }
 }

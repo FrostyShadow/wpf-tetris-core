@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WpfTetrisLib</name>
+    </assembly>
+    <members>
+        <member name="M:WpfTetrisLib.Extensions.DictionaryExtensions.GetValueOrDefault``2(System.Collections.Generic.Dictionary{``0,``1},``0,``1)">
+            <summary>
+            Gets the value or default.
+            </summary>
+            <typeparam name="TKey">Key type</typeparam>
+            <typeparam name="TValue">Value type</typeparam>
+            <param name="self">Target dictionary</param>
+            <param name="key">Key</param>
+            <param name="defaultValue">Default value</param>
+            <returns>Value or default if no value</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Extensions.EnumerableExtensions.WithIndex``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds indexes to IEnumerable elements
+            </summary>
+            <typeparam name="T">IEnumerable element type</typeparam>
+            <param name="self">IEnumerable</param>
+            <returns>Indexed IEnumerable</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Extensions.EnumerableExtensions.WithIndex``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Adds indexes to IEnumerable elements with index incrementation condition
+            </summary>
+            <typeparam name="T">IEnumerable element type</typeparam>
+            <param name="self">IEnumerable</param>
+            <param name="predicate">Index incrementation condition</param>
+            <returns>Indexed IEnumerable</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Extensions.EnumerableExtensions.WithIndex``1(``0[0:,0:])">
+            <summary>
+            Adds indexes to IEnumerable elements
+            </summary>
+            <typeparam name="T">IEnumerable element type</typeparam>
+            <param name="self">IEnumerable</param>
+            <returns>Indexed IEnumerable</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Extensions.EnumerableExtensions.ToDictionary2``3(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``2})">
+            <summary>
+            Creates a two-dimensional dictionary
+            </summary>
+            <typeparam name="TSource">Source type</typeparam>
+            <typeparam name="TKeyX">X-axis type</typeparam>
+            <typeparam name="TKeyY">Y-axis type</typeparam>
+            <param name="self">IEnumerable</param>
+            <param name="xSelector">X-axis key selector</param>
+            <param name="ySelector">Y-axis key selector</param>
+            <returns>Two-dimensional dictionary</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Extensions.EnumerableExtensions.ToDictionary2``4(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Func{``0,``2},System.Func{``0,``3})">
+            <summary>
+            Creates a two-dimensional dictionary
+            </summary>
+            <typeparam name="TSource">Source type</typeparam>
+            <typeparam name="TKeyX">X-axis type</typeparam>
+            <typeparam name="TKeyY">Y-axis type</typeparam>
+            <typeparam name="TElement">IEnumerable element type</typeparam>
+            <param name="self">IEnumerable</param>
+            <param name="xSelector">X-axis key selector</param>
+            <param name="ySelector">Y-axis key selector</param>
+            <param name="elementSelector">Element selector</param>
+            <returns>Two-dimensional dictionary</returns>
+        </member>
+        <member name="T:WpfTetrisLib.Extensions.IndexedItem`1">
+            <summary>
+            Indexed element model
+            </summary>
+            <typeparam name="T">Indexed element type</typeparam>
+        </member>
+        <member name="P:WpfTetrisLib.Extensions.IndexedItem`1.Index">
+            <summary>
+            Index of an element
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Extensions.IndexedItem`1.Element">
+            <summary>
+            Indexed element type
+            </summary>
+        </member>
+        <member name="T:WpfTetrisLib.Extensions.IndexedItem2`1">
+            <summary>
+            Indexed element model
+            </summary>
+            <typeparam name="T">Indexed element type</typeparam>
+        </member>
+        <member name="P:WpfTetrisLib.Extensions.IndexedItem2`1.X">
+            <summary>
+            X-axis value
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Extensions.IndexedItem2`1.Y">
+            <summary>
+            Y-axis value
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Extensions.IndexedItem2`1.Element">
+            <summary>
+            Indexed element type
+            </summary>
+        </member>
+        <member name="M:WpfTetrisLib.Extensions.TimerExtensions.ElapsedAsObservable(System.Timers.Timer)">
+            <summary>
+            Gets ElapsedEvent as IObservable
+            </summary>
+            <param name="self">Timer</param>
+            <returns>ElapsedEvent as IObservable</returns>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Block.Color">
+            <summary>
+            Block color
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Block.Position">
+            <summary>
+            Block position
+            </summary>
+        </member>
+        <member name="T:WpfTetrisLib.Models.Direction">
+            <summary>
+            Directions
+            </summary>
+        </member>
+        <member name="T:WpfTetrisLib.Models.RotationDirection">
+            <summary>
+            Rotation directions
+            </summary>
+        </member>
+        <member name="T:WpfTetrisLib.Models.MoveDirection">
+            <summary>
+            Movement directions
+            </summary>
+        </member>
+        <member name="F:WpfTetrisLib.Models.Field.RowCount">
+            <summary>
+            Number of rows in the game area
+            </summary>
+        </member>
+        <member name="F:WpfTetrisLib.Models.Field.ColumnCount">
+            <summary>
+            Number of columns in the game area
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Field.PlacedBlocks">
+            <summary>
+            Placed blocks
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Field.Tetrimino">
+            <summary>
+            Current tetrimino
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Field.IsActivated">
+            <summary>
+            Is game area active
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Field.IsUpperLimitReached">
+            <summary>
+            Is upper game area limit reached
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Field.LastRemovedRowCount">
+            <summary>
+            Number of previously removed rows
+            </summary>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Field.Activate(WpfTetrisLib.Models.TetriminoKind)">
+            <summary>
+            Activates game area
+            </summary>
+            <param name="tetriminoKind">Active tetrimino kind</param>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Field.MoveTetrimino(WpfTetrisLib.Models.MoveDirection)">
+            <summary>
+            Moves tetrimino in requested direction
+            </summary>
+            <param name="moveDirection">Move direction</param>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Field.RotateTetrimino(WpfTetrisLib.Models.RotationDirection)">
+            <summary>
+            Rotates tetrimino in requested direction
+            </summary>
+            <param name="rotationDirection">Rotation direction</param>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Field.ForceFixTetrimino">
+            <summary>
+            Forces tetrimino to move to the bottom immediately
+            </summary>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Field.SpeedUp">
+            <summary>
+            Speeds up the move of tetrimino
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Game.GameResult">
+            <summary>
+            Game results
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Game.Field">
+            <summary>
+            Game field
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Game.IsPlaying">
+            <summary>
+            Is game running
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Game.IsOver">
+            <summary>
+            Is game over
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Game.NextTetrimino">
+            <summary>
+            Upcoming tetrimino
+            </summary>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Game.Play">
+            <summary>
+            Starts game
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.GameResult.TotalRowCount">
+            <summary>
+            Total score based on all removed rows
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.GameResult.RowCount1">
+            <summary>
+            Number of single rows removed
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.GameResult.RowCount2">
+            <summary>
+            Number of double rows removed
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.GameResult.RowCount3">
+            <summary>
+            Number of triple rows removed
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.GameResult.RowCount4">
+            <summary>
+            Number of quadruple rows removed
+            </summary>
+        </member>
+        <member name="M:WpfTetrisLib.Models.GameResult.AddRowCount(System.Int32)">
+            <summary>
+            Adds rows to scoreboard
+            </summary>
+            <param name="count">Number of rows</param>
+        </member>
+        <member name="M:WpfTetrisLib.Models.GameResult.Clear">
+            <summary>
+            Clears the scoreboard
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Position.Row">
+            <summary>
+            Position in row
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Position.Column">
+            <summary>
+            Position in column
+            </summary>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Position.GetHashCode">
+            <summary>
+            Gets position HashCode
+            </summary>
+            <returns>Position HashCode</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Position.ToString">
+            <summary>
+            Gets position as a string
+            </summary>
+            <returns>Position as string</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Position.op_Equality(WpfTetrisLib.Models.Position,WpfTetrisLib.Models.Position)">
+            <summary>
+            Position equality operator
+            </summary>
+            <param name="position1">First operand</param>
+            <param name="position2">Second operand</param>
+            <returns>True if positions are equal</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Position.op_Inequality(WpfTetrisLib.Models.Position,WpfTetrisLib.Models.Position)">
+            <summary>
+            Position inequality operator
+            </summary>
+            <param name="position1">First operand</param>
+            <param name="position2">Second operand</param>
+            <returns>True if positions aren't equal</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Position.Equals(System.Object)">
+            <summary>
+            Equates two positions
+            </summary>
+            <param name="obj">Position to compare to</param>
+            <returns>True if positions are equal</returns>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Tetrimino.TetriminoKind">
+            <summary>
+            Kind of tetrimino
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Tetrimino.Color">
+            <summary>
+            Color of tetrimino
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Tetrimino.Position">
+            <summary>
+            Position of tetrimino
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Tetrimino.Direction">
+            <summary>
+            Direction of tetrimino
+            </summary>
+        </member>
+        <member name="P:WpfTetrisLib.Models.Tetrimino.Blocks">
+            <summary>
+            List of blocks building tetrimino
+            </summary>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Tetrimino.RandomKind">
+            <summary>
+            Randomizes tetrimino kind
+            </summary>
+            <returns>Random tetrimino kind</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Tetrimino.Create(System.Nullable{WpfTetrisLib.Models.TetriminoKind})">
+            <summary>
+            Creates new tetrimino
+            </summary>
+            <param name="tetriminoKind">Tetrimino kind</param>
+            <returns>Newly created tetrimino</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Tetrimino.Move(WpfTetrisLib.Models.MoveDirection,System.Func{WpfTetrisLib.Models.Block,System.Boolean})">
+            <summary>
+            Moves tetrimino
+            </summary>
+            <param name="moveDirection">Direction of movement</param>
+            <param name="checkCollision">Collision checker</param>
+            <returns>True if tetrimino has moved</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Models.Tetrimino.Rotation(WpfTetrisLib.Models.RotationDirection,System.Func{WpfTetrisLib.Models.Block,System.Boolean})">
+            <summary>
+            Rotates tetrimino
+            </summary>
+            <param name="rotationDirection">Direction of rotation</param>
+            <param name="checkCollision">Collision checker</param>
+            <returns>True if tetrimino has rotated</returns>
+        </member>
+        <member name="T:WpfTetrisLib.Models.TetriminoKind">
+            <summary>
+            Tetrimino kinds
+            </summary>
+        </member>
+        <member name="M:WpfTetrisLib.Models.TetriminoExtensions.BlockColor(WpfTetrisLib.Models.TetriminoKind)">
+            <summary>
+            Sets color of the blocks building tetrimino
+            </summary>
+            <param name="self">Tetrimino kind</param>
+            <returns>Color of given tetrimino kind</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Models.TetriminoExtensions.InitialPosition(WpfTetrisLib.Models.TetriminoKind)">
+            <summary>
+            Sets the initial position of tetrimino
+            </summary>
+            <param name="self">Tetrimino kind</param>
+            <returns>Initial position of tetrimino</returns>
+        </member>
+        <member name="M:WpfTetrisLib.Models.TetriminoExtensions.CreateBlocks(WpfTetrisLib.Models.TetriminoKind,WpfTetrisLib.Models.Position,WpfTetrisLib.Models.Direction)">
+            <summary>
+            Creates blocks building tetrimino
+            </summary>
+            <param name="self">Tetrimino kind</param>
+            <param name="offset">Initial position</param>
+            <param name="direction">Direction of tetrimino</param>
+            <returns></returns>
+        </member>
+        <member name="P:WpfTetrisLib.Providers.RandomProvider.ThreadRandom">
+            <summary>
+            Gets a random number that is thread independent
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -11,23 +11,44 @@ namespace WpfTetrisLib.Models
 {
     public class Field
     {
+        /// <summary>
+        /// Number of rows in the game area
+        /// </summary>
         public const byte RowCount = 24;
+        /// <summary>
+        /// Number of columns in the game area
+        /// </summary>
         public const byte ColumnCount = 10;
 
+        /// <summary>
+        /// Placed blocks
+        /// </summary>
         public IReadOnlyReactiveProperty<IReadOnlyList<Block>> PlacedBlocks => _placedBlocks;
 
         private readonly ReactiveProperty<IReadOnlyList<Block>> _placedBlocks =
             new ReactiveProperty<IReadOnlyList<Block>>(Array.Empty<Block>(),
                 ReactivePropertyMode.RaiseLatestValueOnSubscribe);
 
+        /// <summary>
+        /// Current tetrimino
+        /// </summary>
         public ReactiveProperty<Tetrimino> Tetrimino { get; } = new ReactiveProperty<Tetrimino>();
 
+        /// <summary>
+        /// Is game area active
+        /// </summary>
         public IReadOnlyReactiveProperty<bool> IsActivated => _isActivated;
         private readonly ReactiveProperty<bool> _isActivated = new ReactiveProperty<bool>(mode: ReactivePropertyMode.DistinctUntilChanged);
 
+        /// <summary>
+        /// Is upper game area limit reached
+        /// </summary>
         public IReadOnlyReactiveProperty<bool> IsUpperLimitReached => _isUpperLimitReached;
         private readonly ReactiveProperty<bool> _isUpperLimitReached = new ReactiveProperty<bool>(mode: ReactivePropertyMode.DistinctUntilChanged);
 
+        /// <summary>
+        /// Number of previously removed rows
+        /// </summary>
         public IReadOnlyReactiveProperty<int> LastRemovedRowCount => _lastRemovedRowCount;
         private readonly ReactiveProperty<int> _lastRemovedRowCount = new ReactiveProperty<int>(mode: ReactivePropertyMode.None);
 
@@ -40,6 +61,10 @@ namespace WpfTetrisLib.Models
                 .Subscribe(x => MoveTetrimino(MoveDirection.Down));
         }
 
+        /// <summary>
+        /// Activates game area
+        /// </summary>
+        /// <param name="tetriminoKind">Active tetrimino kind</param>
         public void Activate(TetriminoKind tetriminoKind)
         {
             _isActivated.Value = true;
@@ -117,6 +142,10 @@ namespace WpfTetrisLib.Models
             _placedBlocks.Value = result.Item2;
         }
 
+        /// <summary>
+        /// Moves tetrimino in requested direction
+        /// </summary>
+        /// <param name="moveDirection">Move direction</param>
         public void MoveTetrimino(MoveDirection moveDirection)
         {
             if(!_isActivated.Value) return;
@@ -133,6 +162,10 @@ namespace WpfTetrisLib.Models
             if(Tetrimino.Value.Move(moveDirection, CheckCollision)) Tetrimino.ForceNotify();
         }
 
+        /// <summary>
+        /// Rotates tetrimino in requested direction
+        /// </summary>
+        /// <param name="rotationDirection">Rotation direction</param>
         public void RotateTetrimino(RotationDirection rotationDirection)
         {
             if (!_isActivated.Value) return;
@@ -141,6 +174,9 @@ namespace WpfTetrisLib.Models
                 Tetrimino.ForceNotify();
         }
 
+        /// <summary>
+        /// Forces tetrimino to move to the bottom immediately
+        /// </summary>
         public void ForceFixTetrimino()
         {
             if(!_isActivated.Value) return;
@@ -153,6 +189,9 @@ namespace WpfTetrisLib.Models
             Timer.Start();
         }
 
+        /// <summary>
+        /// Speeds up the move of tetrimino
+        /// </summary>
         public void SpeedUp()
         {
             const int min = 15;

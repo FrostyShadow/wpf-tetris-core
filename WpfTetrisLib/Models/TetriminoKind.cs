@@ -5,6 +5,9 @@ using System.Windows.Media;
 
 namespace WpfTetrisLib.Models
 {
+    /// <summary>
+    /// Tetrimino kinds
+    /// </summary>
     public enum TetriminoKind
     {
         I,
@@ -18,6 +21,11 @@ namespace WpfTetrisLib.Models
 
     public static class TetriminoExtensions
     {
+        /// <summary>
+        /// Sets color of the blocks building tetrimino
+        /// </summary>
+        /// <param name="self">Tetrimino kind</param>
+        /// <returns>Color of given tetrimino kind</returns>
         public static Color BlockColor(this TetriminoKind self)
         {
             return self switch
@@ -33,6 +41,11 @@ namespace WpfTetrisLib.Models
             };
         }
 
+        /// <summary>
+        /// Sets the initial position of tetrimino
+        /// </summary>
+        /// <param name="self">Tetrimino kind</param>
+        /// <returns>Initial position of tetrimino</returns>
         public static Position InitialPosition(this TetriminoKind self)
         {
             var length = 0;
@@ -56,6 +69,13 @@ namespace WpfTetrisLib.Models
             return new Position(row, column);
         }
 
+        /// <summary>
+        /// Creates blocks building tetrimino
+        /// </summary>
+        /// <param name="self">Tetrimino kind</param>
+        /// <param name="offset">Initial position</param>
+        /// <param name="direction">Direction of tetrimino</param>
+        /// <returns></returns>
         public static IReadOnlyList<Block> CreateBlocks(this TetriminoKind self, Position offset,
             Direction direction = Direction.Up)
         {

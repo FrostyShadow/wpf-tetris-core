@@ -54,6 +54,7 @@ namespace WpfTetrisApp.ViewModels
         public GameResultViewModel(GameResult gameResult)
         {
             GameResult = gameResult;
+            _totalRowCount = GameResult.TotalRowCount;
             _rowCount1 = GameResult.RowCount1;
             _rowCount2 = GameResult.RowCount2;
             _rowCount3 = GameResult.RowCount3;

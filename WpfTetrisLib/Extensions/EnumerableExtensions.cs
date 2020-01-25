@@ -6,6 +6,12 @@ namespace WpfTetrisLib.Extensions
 {
     public static class EnumerableExtensions
     {
+        /// <summary>
+        /// Adds indexes to IEnumerable elements
+        /// </summary>
+        /// <typeparam name="T">IEnumerable element type</typeparam>
+        /// <param name="self">IEnumerable</param>
+        /// <returns>Indexed IEnumerable</returns>
         public static IEnumerable<IndexedItem<T>> WithIndex<T>(this IEnumerable<T> self)
         {
             if(self == null)
@@ -13,6 +19,13 @@ namespace WpfTetrisLib.Extensions
             return self.Select((x, i) => new IndexedItem<T>(i, x));
         }
 
+        /// <summary>
+        /// Adds indexes to IEnumerable elements with index incrementation condition
+        /// </summary>
+        /// <typeparam name="T">IEnumerable element type</typeparam>
+        /// <param name="self">IEnumerable</param>
+        /// <param name="predicate">Index incrementation condition</param>
+        /// <returns>Indexed IEnumerable</returns>
         public static IEnumerable<IndexedItem<T>> WithIndex<T>(this IEnumerable<T> self, Func<T, bool> predicate)
         {
             if(self == null)
@@ -29,6 +42,12 @@ namespace WpfTetrisLib.Extensions
             }
         }
 
+        /// <summary>
+        /// Adds indexes to IEnumerable elements
+        /// </summary>
+        /// <typeparam name="T">IEnumerable element type</typeparam>
+        /// <param name="self">IEnumerable</param>
+        /// <returns>Indexed IEnumerable</returns>
         public static IEnumerable<IndexedItem2<T>> WithIndex<T>(this T[,] self)
         {
             if(self == null)
@@ -39,6 +58,16 @@ namespace WpfTetrisLib.Extensions
                     yield return new IndexedItem2<T>(x, y, self[x,y]);
         }
 
+        /// <summary>
+        /// Creates a two-dimensional dictionary
+        /// </summary>
+        /// <typeparam name="TSource">Source type</typeparam>
+        /// <typeparam name="TKeyX">X-axis type</typeparam>
+        /// <typeparam name="TKeyY">Y-axis type</typeparam>
+        /// <param name="self">IEnumerable</param>
+        /// <param name="xSelector">X-axis key selector</param>
+        /// <param name="ySelector">Y-axis key selector</param>
+        /// <returns>Two-dimensional dictionary</returns>
         public static Dictionary<TKeyX, Dictionary<TKeyY, TSource>> ToDictionary2<TSource, TKeyX, TKeyY>(
             this IEnumerable<TSource> self, Func<TSource, TKeyX> xSelector, Func<TSource, TKeyY> ySelector)
         {
@@ -49,6 +78,18 @@ namespace WpfTetrisLib.Extensions
             return self.GroupBy(xSelector).ToDictionary(x => x.Key, xs => xs.ToDictionary(ySelector));
         }
 
+        /// <summary>
+        /// Creates a two-dimensional dictionary
+        /// </summary>
+        /// <typeparam name="TSource">Source type</typeparam>
+        /// <typeparam name="TKeyX">X-axis type</typeparam>
+        /// <typeparam name="TKeyY">Y-axis type</typeparam>
+        /// <typeparam name="TElement">IEnumerable element type</typeparam>
+        /// <param name="self">IEnumerable</param>
+        /// <param name="xSelector">X-axis key selector</param>
+        /// <param name="ySelector">Y-axis key selector</param>
+        /// <param name="elementSelector">Element selector</param>
+        /// <returns>Two-dimensional dictionary</returns>
         public static Dictionary<TKeyX, Dictionary<TKeyY, TElement>> ToDictionary2<TSource, TKeyX, TKeyY, TElement>(
             this IEnumerable<TSource> self, Func<TSource, TKeyX> xSelector, Func<TSource, TKeyY> ySelector,
             Func<TSource, TElement> elementSelector)

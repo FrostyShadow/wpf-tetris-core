@@ -7,10 +7,25 @@ namespace WpfTetrisLib.Models
 {
     public class Game
     {
+        /// <summary>
+        /// Game results
+        /// </summary>
         public GameResult GameResult { get; } = new GameResult();
+        /// <summary>
+        /// Game field
+        /// </summary>
         public Field Field { get; } = new Field();
+        /// <summary>
+        /// Is game running
+        /// </summary>
         public IReadOnlyReactiveProperty<bool> IsPlaying => Field.IsActivated.ToReadOnlyReactiveProperty();
+        /// <summary>
+        /// Is game over
+        /// </summary>
         public IReadOnlyReactiveProperty<bool> IsOver => Field.IsUpperLimitReached.ToReadOnlyReactiveProperty();
+        /// <summary>
+        /// Upcoming tetrimino
+        /// </summary>
         public IReadOnlyReactiveProperty<TetriminoKind> NextTetrimino => _nextTetrimino;
         private readonly ReactiveProperty<TetriminoKind> _nextTetrimino = new ReactiveProperty<TetriminoKind>();
         private int PreviousCount { get; set; }
@@ -33,6 +48,9 @@ namespace WpfTetrisLib.Models
             Field.LastRemovedRowCount.Subscribe(GameResult.AddRowCount);
         }
 
+        /// <summary>
+        /// Starts game
+        /// </summary>
         public void Play()
         {
             if(IsPlaying.Value)

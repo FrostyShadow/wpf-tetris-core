@@ -4,7 +4,9 @@ using Prism.Ioc;
 using Prism.Unity;
 using System;
 using System.IO;
+using System.Media;
 using System.Windows;
+using Reactive.Bindings;
 using Unity;
 using Unity.Microsoft.DependencyInjection;
 using WpfTetrisApp.Views;
@@ -17,6 +19,7 @@ namespace WpfTetrisApp
     /// </summary>
     public partial class App
     {
+        public static SoundPlayer BgmPlayer { get; private set; }
         public IConfiguration Configuration { get; private set; }
 
         private IUnityContainer _container;
@@ -31,7 +34,7 @@ namespace WpfTetrisApp
                 .AddJsonFile("appsettings.json", false, true)
                 .AddJsonFile(Path.Combine(appDataPath, "appsettings.json"), true, true)
                 .Build();
-
+            BgmPlayer = new SoundPlayer("Resources\\Tetris.wav");
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
             _container.BuildServiceProvider(serviceCollection);

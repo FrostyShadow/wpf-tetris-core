@@ -2,9 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\kosma\source\repos\TetrisWpfCore\WpfTetrisLib\WpfTetrisLib.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>WpfTetrisLib\WpfTetrisLib.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="docfx.console" Version="2.48.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Prism.Unity" Version="7.2.0.1422" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
     <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
@@ -13,7 +30,7 @@
     <PackageReference Include="System.Reactive.Interfaces" Version="4.3.2" />
     <PackageReference Include="System.Reactive.Linq" Version="4.3.2" />
     <PackageReference Include="System.Reactive.PlatformServices" Version="4.3.2" />
-    <PackageReference Include="ReactiveProperty" Version="6.1.4" />
+    <PackageReference Include="ReactiveProperty" Version="6.2.0" />
   </ItemGroup>
 
 </Project>
