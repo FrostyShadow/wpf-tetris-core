@@ -4,30 +4,40 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:views="clr-namespace:WpfTetrisApp.Views"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="Tetris" Height="600" Width="550" >
+        Title="Tetris" Height="800" Width="550" >
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="Left" Command="{Binding MoveLeftCommand}" />
+        <KeyBinding Key="Right" Command="{Binding MoveRightCommand}" />
+        <KeyBinding Key="Up" Command="{Binding RotateCommand}" />
+        <KeyBinding Key="Down" Command="{Binding ForceDownCommand}" />
+        <KeyBinding Key="Escape" Command="{Binding NewGameCommand}" />
+    </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <views:FieldView Grid.Column="0" />
+        <views:FieldView Grid.Column="0"
+                         DataContext="{Binding Field}" />
 
         <Grid Grid.Column="1" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
+                <RowDefinition />
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <views:NextFieldView Grid.Row="0"
-                                 HorizontalAlignment="Center" />
+                                 DataContext="{Binding NextField}"
+                                 Margin="5"/>
 
-            <views:GameResultView Grid.Row="2" 
-                                  HorizontalAlignment="Center" />
+            <views:GameResultView Grid.Row="2"
+                                  DataContext="{Binding GameResult}"
+                                  Margin="10"/>
         </Grid>
 
         <Grid Grid.Column="0"
@@ -49,6 +59,7 @@
             <TextBlock Grid.Row="2"
                        Text="Press the Esc key to continue"
                        FontSize="24"
+                       Foreground="WhiteSmoke"
                        TextAlignment="Center" />
         </Grid>
     </Grid>
