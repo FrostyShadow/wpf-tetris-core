@@ -1,36 +1,43 @@
-﻿using Prism.Mvvm;
+﻿using System.Media;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media;
+using Prism.Commands;
+using Prism.Mvvm;
 using Reactive.Bindings;
+using WpfTetrisLib.Extensions;
 using WpfTetrisLib.Models;
 
 namespace WpfTetrisApp.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        
+
         private Game Game { get; } = new Game();
 
-        private GameResultViewModel _gameResultViewModel;
+        private GameResultViewModel _gameResult;
 
-        public GameResultViewModel GameResultViewModel
+        public GameResultViewModel GameResult
         {
-            get => _gameResultViewModel;
-            set => SetProperty(ref _gameResultViewModel, value);
+            get => _gameResult;
+            set => SetProperty(ref _gameResult, value);
         }
 
-        private FieldViewModel _fieldViewModel;
+        private FieldViewModel _field;
 
-        public FieldViewModel FieldViewModel
+        public FieldViewModel Field
         {
-            get => _fieldViewModel;
-            set => SetProperty(ref _fieldViewModel, value);
+            get => _field;
+            set => SetProperty(ref _field, value);
         }
 
-        private NextFieldViewModel _nextFieldViewModel;
+        private NextFieldViewModel _nextField;
 
-        public NextFieldViewModel NextFieldViewModel
+        public NextFieldViewModel NextField
         {
-            get => _nextFieldViewModel;
-            set => SetProperty(ref _nextFieldViewModel, value);
+            get => _nextField;
+            set => SetProperty(ref _nextField, value);
         }
 
         private IReadOnlyReactiveProperty<bool> _isPlaying;
@@ -49,15 +56,70 @@ namespace WpfTetrisApp.ViewModels
             set => SetProperty(ref _isGameOver, value);
         }
 
+        public DelegateCommand<object> MoveLeftCommand { get; }
+        public DelegateCommand<object> MoveRightCommand { get; }
+        public DelegateCommand<object> ForceDownCommand { get; }
+        public DelegateCommand<object> RotateCommand { get; }
+        public DelegateCommand<object> NewGameCommand { get; }
+
         public MainWindowViewModel()
         {
-            _gameResultViewModel = new GameResultViewModel(Game.GameResult);
-            _fieldViewModel = new FieldViewModel(Game.Field);
-            _nextFieldViewModel = new NextFieldViewModel(Game.NextTetrimino);
+            MoveLeftCommand = new DelegateCommand<object>(MoveLeft);
+            MoveRightCommand = new DelegateCommand<object>(MoveRight);
+            ForceDownCommand = new DelegateCommand<object>(ForceDown);
+            RotateCommand = new DelegateCommand<object>(Rotate);
+            NewGameCommand = new DelegateCommand<object>(NewGame);
+            _gameResult = new GameResultViewModel(Game.GameResult);
+            _field = new FieldViewModel(Game.Field);
+            _nextField = new NextFieldViewModel(Game.NextTetrimino);
+            SetupField(Field.FieldGrid ,Field.Cells, 30);
+            SetupField(NextField.FieldGrid ,NextField.Cells, 18);
             _isPlaying = Game.IsPlaying;
             _isGameOver = Game.IsOver;
+            Game.Play();
+            if(IsPlaying.Value) App.BgmPlayer.PlayLooping();
         }
 
-        public void Play() => Game.Play();
+        private void MoveLeft(object parameter) => Field.MoveTetrimino(MoveDirection.Left);
+        private void MoveRight(object parameter) => Field.MoveTetrimino(MoveDirection.Right);
+        private void ForceDown(object parameter) => Field.ForceFixTetrimino();
+        private void Rotate(object parameter) => Field.RotateTetrimino(RotationDirection.Right);
+
+        private void NewGame(object parameter)
+        {
+            if (IsPlaying.Value) return;
+            App.BgmPlayer.Stop();
+            Game.Play();
+            App.BgmPlayer.PlayLooping();
+        }
+
+        private static void SetupField(Grid field, CellViewModel[,] cells, byte blockSize)
+        {
+            for(var i = 0;i < cells.GetLength(0); i++)
+            {
+                field.RowDefinitions.Add(new RowDefinition {Height = new GridLength(blockSize, GridUnitType.Pixel)});
+            }
+
+            for (var i = 0; i < cells.GetLength(1); i++)
+            {
+                field.ColumnDefinitions.Add(new ColumnDefinition{Width = new GridLength(blockSize, GridUnitType.Pixel)});
+            }
+
+            foreach (var indexedItem2 in cells.WithIndex())
+            {
+                var brush = new SolidColorBrush();
+                var control = new TextBlock
+                {
+                    DataContext = indexedItem2.Element,
+                    Background = brush,
+                    Margin = new Thickness(1)
+                };
+                BindingOperations.SetBinding(brush, SolidColorBrush.ColorProperty, new Binding("Color.Value"));
+
+                Grid.SetRow(control, indexedItem2.X);
+                Grid.SetColumn(control, indexedItem2.Y);
+                field.Children.Add(control);
+            }
+        }
     }
 }
