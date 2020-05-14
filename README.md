@@ -42,4 +42,4 @@ This project is licensed under the MIT License
 
 ## Acknowledgments
 
-* **Taaki Suzuki** - Creator of the WpfTetris game built around .NET Framework. His work inspired many aspects of, and was the general inspiration for creating, this project - [xin9le](https://github.com/xin9le)
+* **Takaaki Suzuki** - Creator of the WpfTetris game built around .NET Framework. His work inspired many aspects of, and was the general inspiration for creating, this project - [xin9le](https://github.com/xin9le)
