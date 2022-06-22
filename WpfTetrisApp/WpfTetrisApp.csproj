@@ -34,7 +34,7 @@
     <PackageReference Include="Unity" Version="5.11.3" />
     <PackageReference Include="Unity.Microsoft.DependencyInjection" Version="5.11.5" />
     <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.3</Version>
+      <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
   </ItemGroup>
